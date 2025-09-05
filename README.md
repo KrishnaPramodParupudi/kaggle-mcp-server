@@ -1,70 +1,64 @@
 # kaggle-mcp-server
 This project provides an MCP (Model Context Protocol) server for interacting with Kaggle competitions from Claude Desktop (or any MCP-compatible client)
 
-It uses the Kaggle API
- to fetch competition details and expose them as MCP tools.
+It uses the Kaggle API to fetch competition details and expose them as MCP tools.
 
 🚀 Setup
-1. Clone the repository and install dependencies
-pip install -r requirements.txt
+# 1. Clone the repository and install dependencies
+     pip install -r requirements.txt
 
-2. Configure Kaggle API credentials
+# 2. Configure Kaggle API credentials
 
-Go to your Kaggle account
+      Go to your Kaggle account
 .
 
-Scroll to API section → click Create New API Token.
-This will download a file called kaggle.json.
+      Scroll to API section → click Create New API Token.
+      This will download a file called kaggle.json.
 
-Place kaggle.json in the following location on your system:
+      Place kaggle.json in the following location on your system:
+      
+      Linux/Mac:
+      
+      ~/.kaggle/kaggle.json
+      
+      
+      Windows:
+      
+      C:\Users\<your-username>\.kaggle\kaggle.json
 
-Linux/Mac:
+# 3. Configure Claude Desktop
 
-~/.kaggle/kaggle.json
-
-
-Windows:
-
-C:\Users\<your-username>\.kaggle\kaggle.json
-
-
-⚠️ Make sure the file has the correct permissions:
-
-chmod 600 ~/.kaggle/kaggle.json   # Linux/Mac
-
-3. Configure Claude Desktop
-
-To connect Claude with this MCP server, create or update the file:
-
-Claude/claude_desktop_config.json
-
-
-with the following contents:
-
-{
-  "mcpServers": {
-    "Kaggle": {
-      "command": "<path-to-your-python-executable>",
-      "args": ["<path-to-your-kaggle-server.py>"]
-    }
-  }
-}
-
-
-Replace <path-to-your-python-executable> with the path to your Python interpreter (e.g. python or C:/Python/python.exe).
-
-Replace <path-to-your-kaggle-server.py> with the path to this repo’s kaggle-server.py file.
-
-Example (Windows):
-
-{
-  "mcpServers": {
-    "Kaggle": {
-      "command": "python",
-      "args": ["C:/Users/YourName/kaggle-server.py"]
-    }
-  }
-}
+     To connect Claude with this MCP server, create or update the file:
+     
+     Claude/claude_desktop_config.json
+     
+     
+     with the following contents:
+     
+     {
+       "mcpServers": {
+         "Kaggle": {
+           "command": "<path-to-your-python-executable>",
+           "args": ["<path-to-your-kaggle-server.py>"]
+         }
+       }
+     }
+     
+     
+     Replace <path-to-your-python-executable> with the path to your Python interpreter (e.g. python or C:/Python/python.exe).
+     
+     Replace <path-to-your-kaggle-server.py> with the path to this repo’s kaggle-server.py file.
+     
+     Example (Windows):
+     
+     {
+       "mcpServers": {
+         "Kaggle": {
+           "command": "python",
+           "args": ["C:/Users/YourName/kaggle-server.py"]
+         }
+       }
+     }
 
 📜 Usage
 
@@ -72,7 +66,7 @@ Once configured:
 
 Start Claude Desktop.
 
-The Kaggle MCP server will automatically launch.
+Start the Kaggle MCP server (Run kaggle-server.py as a Python File).
 
 You can now use MCP tools defined in kaggle-server.py, for example:
 
