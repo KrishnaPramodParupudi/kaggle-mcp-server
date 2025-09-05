@@ -8,7 +8,7 @@ This project provides an MCP (Model Context Protocol) server for interacting wit
 # 2. Configure Kaggle API credentials
 
       Go to your Kaggle account
-.
+      
       Scroll to API section → click Create New API Token.
       This will download a file called kaggle.json.
 
