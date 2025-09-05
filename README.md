@@ -79,6 +79,6 @@ This project provides an MCP (Model Context Protocol) server for interacting wit
 
 # 🔒 Security Notes
 
-     Never commit your kaggle.json file to source control.
+     Never commit your kaggle.json file.
      
      Ensure the .kaggle folder has restricted permissions.
