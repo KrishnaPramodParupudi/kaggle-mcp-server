@@ -60,44 +60,42 @@ It uses the Kaggle API to fetch competition details and expose them as MCP tools
        }
      }
 
-📜 Usage
+# 📜 Usage
 
-Once configured:
+     Once configured:
+     
+     Start Claude Desktop.
+     
+     Start the Kaggle MCP server (Run kaggle-server.py as a Python File).
+     
+     You can now use MCP tools defined in kaggle-server.py, for example:
+     
+     get_competitions_list: Fetches the list of available Kaggle competitions and returns them in a JSON-friendly format.
 
-Start Claude Desktop.
+# 🛠️ About the Code
 
-Start the Kaggle MCP server (Run kaggle-server.py as a Python File).
+     kaggle-server.py registers MCP tools using the @mcp.tool() decorator.
+     
+     The server communicates with Claude via MCP and exposes Kaggle API methods.
+     
+     Example tool:
+     
+     @mcp.tool()
+     def get_competitions_list() -> list[dict]:
+         """
+         Fetch the list of available Kaggle competitions.
+         """
 
-You can now use MCP tools defined in kaggle-server.py, for example:
+# ✅ Requirements
 
-get_competitions_list: Fetches the list of available Kaggle competitions and returns them in a JSON-friendly format.
+      Python 3.10+
+          
+      Kaggle API credentials (kaggle.json)
+          
+      Dependencies listed in requirements.txt
 
-🛠️ About the Code
+# 🔒 Security Notes
 
-kaggle-server.py registers MCP tools using the @mcp.tool() decorator.
-
-The server communicates with Claude via MCP and exposes Kaggle API methods.
-
-Example tool:
-
-@mcp.tool()
-def get_competitions_list() -> list[dict]:
-    """
-    Fetch the list of available Kaggle competitions.
-    """
-
-✅ Requirements
-
-Python 3.10+
-
-Kaggle API credentials (kaggle.json)
-
-Dependencies listed in requirements.txt
-
-🔒 Security Notes
-
-Never commit your kaggle.json file to source control.
-
-Ensure the .kaggle folder has restricted permissions.
-
-Would you like me to also include example CLI usage (like running python kaggle-server.py directly to test), or keep the README scoped only to Claude integration?
+     Never commit your kaggle.json file to source control.
+     
+     Ensure the .kaggle folder has restricted permissions.
