@@ -7,16 +7,15 @@ mcp = FastMCP("Kaggle")
 api = KaggleApi()
 api.authenticate()
 
-
-#   -------------------------
-#   Competition Related Tools
-#   -------------------------
-
-
 import json
 
 def make_json_safe(data):
     return json.loads(str(data))
+
+
+#   -------------------------
+#   Competition Related Tools
+#   -------------------------
     
 
 @mcp.tool()
@@ -30,28 +29,30 @@ def get_competitions_list() -> Any:
     """
     try:
         competitions_raw = api.competitions_list()
-        competitions_list = [make_json_safe(competition) for competition in competitions_raw] #Converting the type to dict for claude
+        competitions_list = [make_json_safe(competition) for competition in competitions_raw]
         return competitions_list
     except Exception as e:
         return f"Exception occurred: {e}"
 
 
-# @mcp.tool()
-# def get_competition_leaderboard_view(competition_name: str) -> list | str:
-#     """
-#     Fetch the leaderboard for a specific competition.
+@mcp.tool()
+def get_competition_leaderboard_view(competition_name: str) -> list | str:
+    """
+    Fetch the leaderboard for a specific competition.
 
-#     Args:
-#         competition_name (str): The name of the competition.
+    Args:
+        competition_name (str): The name of the competition.
 
-#     Returns:
-#         list: Leaderboard data for the competition.
-#         str: An error message if the request fails.
-#     """
-#     try:
-#         return api.competition_leaderboard_view(competition=competition_name)
-#     except Exception as e:
-#         return f"Exception occurred: {e}"
+    Returns:
+        list: Leaderboard data for the competition.
+        str: An error message if the request fails.
+    """
+    try:
+        competitons_leaderboard_raw = api.competition_leaderboard_view(competition=competition_name)
+        competitions_leaderboard_list = [make_json_safe(competition) for competition in competitons_leaderboard_raw]
+        return competitions_leaderboard_list
+    except Exception as e:
+        return f"Exception occurred: {e}"
 
 
 @mcp.tool()
